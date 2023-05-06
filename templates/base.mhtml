@@ -1,0 +1,244 @@
+<%!
+description = ''
+title = 'Frontpage'
+extra_css = []
+%>\
+<%namespace name="utils" file="utils.mc" />\
+<!DOCTYPE html>
+<html lang="${ site.lang or 'en' }">
+    <head>
+      <%block name="site_meta">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        % if page.description or self.attr.description:
+          <meta name="description" content="${ page.description or self.attr.description }">
+        % endif
+        % if site.author:
+          <meta name="author" content="${ site.author }">
+        % endif
+        % if page.canonical_url:
+          <link rel="canonical" href="${ page.canonical_url }">
+        % endif
+        % if site.favicon:
+          <link rel="shortcut icon" href="${ site.favicon | url }">
+        % else:
+          <link rel="shortcut icon" href="${ 'img/favicon.ico' | url }">
+        % endif
+      </%block>
+
+      <%block name="htmltitle">
+        <title>${ page.title or _(self.attr.title) } - ${ site.name }</title>
+      </%block>
+
+      <%block name="styles">
+        <link href="${ 'css/bs5/bootstrap.min.css' | url }" rel="stylesheet">
+        <link href="${ 'css/font-awesome.min.css' | url }" rel="stylesheet">
+        <link href="${ 'css/base.css' | url }" rel="stylesheet">
+        % if site.highlightjs:
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/${ site.hljs_style or 'github' }.min.css">
+        % endif
+        % for path in self.attr.extra_css:
+        <link href="${ path }" rel="stylesheet">
+        % endfor
+        % for path in (site.extra_css or []):
+        <link href="${ path }" rel="stylesheet">
+        % endfor
+        % for path in (page.extra_css or []):
+        <link href="${ path }" rel="stylesheet">
+        % endfor
+      </%block>
+
+      <%block name="libs">
+
+        <script src="${ 'js/jquery-1.10.2.min.js' | url }" defer></script>
+        <script src="${ 'js/bs5/bootstrap.bundle.min.js' | url }" defer></script>
+        % if site.highlightjs:
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        % for lang in site.hljs_languages:
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/${ lang }.min.js"></script>
+        % endfor
+        <script>hljs.initHighlightingOnLoad();</script>
+        % endif
+      </%block>
+
+      <%block name="analytics">
+        % if site.analytics.gtag:
+        <script async src="https://www.googletagmanager.com/gtag/js?id=${ site.analytics.gtag }"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${ site.analytics.gtag }');
+        </script>
+        % elif site.google_analytics:
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', '${ site.google_analytics[0] }', '${ site.google_analytics[1] }');
+            ga('send', 'pageview');
+        </script>
+        % endif
+      </%block>
+
+      <%block name="extrahead"></%block>
+    </head>
+
+    <body${ ' class="homepage"' if page and page.is_homepage else '' |n }>
+      <div class="navbar fixed-top navbar-expand-lg navbar-${ 'light' if str(site.nav_style) == "light" else 'dark' } bg-${ site.nav_style or 'dark' }">
+            <div class="container">
+
+                <%block name="site_name">
+                <a class="navbar-brand" href="${ nav.homepage.url if nav.homepage else '/' | url }">${ site.name }</a>
+                </%block>
+
+                % if len(nav) > 1 or page.next_page or page.previous_page or site.repo_url:
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                % endif
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse justify-content-between">
+                  <%block name="site_nav">
+                    % if len(nav) > 1:
+                      <!-- Main navigation -->
+                      <ul class="nav navbar-nav">
+                        % for nav_item in nav:
+                          % if nav_item.is_link and nav_item.is_homepage and nav.homepage:
+                            ## No need to repeat the Home link since we
+                            ## have it already in navbar-brand above.
+                            <% continue %>
+                          % elif nav_item.children:
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle${ ' active' if nav_item.contains_url(SELF_URL, url, best=False) else '' }" data-bs-toggle="dropdown">${ nav_item.title } <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                % for it in nav_item:
+                                  ${ utils.nav_sub(it, SELF_URL) }
+                                % endfor
+                                </ul>
+                            </li>
+                          % else:
+                            <li class="navitem">
+                                <a href="${ nav_item.url | url }" class="nav-link${ ' active' if nav_item.contains_url(SELF_URL, url, best=True) else '' }">${ nav_item.title }</a>
+                            </li>
+                          % endif
+                        % endfor
+                      </ul>
+                    % endif
+                  </%block>
+
+                    <ul class="nav navbar-nav ml-auto">
+                      <%block name="search_button">
+                        % if site.lunr_search:
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#wmkdocs_search_modal">
+                                <i class="fa fa-search"></i> ${ _("Search") }
+                            </a>
+                        </li>
+                        % endif
+                      </%block>
+
+                      <%block name="next_prev">
+                        <%
+                        next_url = page.next_page if page and page.next_page else None
+                        prev_url = page.previous_page if page and page.previous_page else None
+                        if not next_url and not prev_url:
+                            links = nav._links_in_order()
+                            foundme = [_ for _ in links if _.is_url(SELF_URL, url)]
+                            if foundme:
+                                next_url = foundme[0].next.url if foundme[0].next else None
+                                prev_url = foundme[0].previous.url if foundme[0].previous else None
+                        %>
+                        % if next_url or prev_url:
+                            <li class="nav-item">
+                              % if prev_url:
+                                <a rel="prev" href="${ prev_url | url }" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> ${ _("Previous") }
+                                </a>
+                              % else:
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> ${ _("Previous") }
+                                </a>
+                              % endif
+                            </li>
+                            <li class="nav-item">
+                              % if next_url:
+                                <a rel="next" href="${ next_url | url }" class="nav-link">
+                                    <i class="fa fa-arrow-right"></i> ${ _("Next") }
+                                </a>
+                              % else:
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-right"></i> ${ _("Next") }
+                                </a>
+                              % endif
+                            </li>
+                        % endif
+                      </%block>
+
+                      <%block name="repo">
+                        <% known_repohubs = ('github', 'bitbucket', 'gitlab') %>
+                        % if site.repo_url:
+                            <% found_hub = [hub for hub in known_repohubs if hub in site.repo_url] %>
+                            <li class="nav-item">
+                                <a href="${ site.repo_url }" class="nav-link" title="${ site.repo_name or _('Code') }">
+                                % if found_hub:
+                                  <i class="fa fa-${ found_hub[0] }"></i>
+                                % else:
+                                  ${ site.repo_name or _('Code') }
+                                % endif
+                                </a>
+                            </li>
+                        % endif
+                      </%block>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <%block name="content">
+                    <div class="col-md-3"><%include file="toc.mc" /></div>
+                    <div class="col-md-9" role="main">
+                      ${ CONTENT if CONTENT else '<!-- no content?? -->' }
+                    </div>
+                </%block>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+          <%block name="footer">
+            <hr>
+            % if site.copyright:
+                <p>${ site.copyright }</p>
+            % endif
+            % if site.tagline:
+                <p>${ site.tagline }</p>
+            % endif
+            ## XXX: Attribute to wmk here?
+          </%block>
+        </footer>
+
+      <%block name="scripts">
+        <% shortcuts = site.shortcuts or {'help': 72, 'next': 78, 'previous': 80, 'search': 83} %>
+        <script>
+            var base_url = ${ site.leading_path or site.base_url or '/' | to_json },
+                shortcuts = ${ to_json(shortcuts)  };
+        </script>
+        <script src="${ 'js/base.js' | url }" defer></script>
+        % for path in site.extra_javascript:
+        <script src="${ path | url }" defer></script>
+        % endfor
+      </%block>
+
+        % if site.lunr_search:
+          <%include file="search-modal.mc" />
+        % endif
+        <%include file="keyboard-modal.mc" />
+    </body>
+</html>
