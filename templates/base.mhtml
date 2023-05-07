@@ -7,7 +7,7 @@ nav_class = ''
 main_class = 'items-fixed'
 %>\
 <!DOCTYPE html>
-<html lang="${ site.lang or 'en' }" class="light-theme">
+<html lang="${ site.lang or 'en' }">
     <head>
       <%block name="site_meta">
         <meta charset="utf-8">
@@ -37,7 +37,7 @@ main_class = 'items-fixed'
         <link href="${ 'css/font-awesome.min.css' | url }" rel="stylesheet">
         <link href="${ 'css/wdocs.css' | url }" rel="stylesheet">
         % if site.highlightjs:
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/${ site.hljs_style or 'github' }.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/${ site.hljs_style or 'github' }.min.css">
         % endif
         % for path in self.attr.extra_css:
         <link href="${ path | url }" rel="stylesheet">
@@ -52,9 +52,9 @@ main_class = 'items-fixed'
 
       <%block name="libs">
         % if site.highlightjs:
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
         % for lang in site.hljs_languages:
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/${ lang }.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/${ lang }.min.js"></script>
         % endfor
         <script>hljs.initHighlightingOnLoad();</script>
         % endif
@@ -69,7 +69,7 @@ main_class = 'items-fixed'
 
     <body${ ' class="homepage"' if page and page.is_homepage else '' |n }>
     <%block name="header">
-      <header class="dark-theme ${ self.attr.header_class }">
+      <header class="reverse-theme ${ self.attr.header_class }">
         <div class="container items-fixed">
         <nav class="${ self.attr.nav_class }">
           <a href="${ '/' | url }" class="text brand larger">
@@ -145,7 +145,7 @@ main_class = 'items-fixed'
       </%block>
     </main>
     <%block name="footer">
-    <footer class="dark-theme">
+    <footer class="reverse-theme">
       % if site.copyright:
         <p>${ site.copyright }</p>
       % endif

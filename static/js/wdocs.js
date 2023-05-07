@@ -8,14 +8,15 @@ document.addEventListener('click', function(e) {
 
 // Listen for shortcut keys
 document.addEventListener("keydown", function(e){
-  let tag = e.target.tagName.toUpperCase;
+  let tag = e.target.tagName.toUpperCase();
   if (tag == 'INPUT' || tag == 'TEXTAREA') return true;
   let key = e.which || e.keyCode || window.event && window.event.keyCode;
   let sel = null;
   // n==78, p==80, s=83
   if (key == 78) { // n==next
     sel = document.querySelector('nav a[rel="next"]')
-  } else if (key == 80) { // p==prev
+  }
+  else if (key == 80) { // p==prev
     sel = document.querySelector('nav a[rel="prev"]')
   }
   if (sel) {

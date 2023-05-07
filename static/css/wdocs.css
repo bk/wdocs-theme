@@ -73,7 +73,7 @@ article.toc > ul > li:first-child {
 
 /* For the frontpage (may be too specific?) */
 .jumbotron {
-    background: var(--contrast-bg);
+    background: var(--accent-bg);
     border-radius: var(--border-radius);
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -82,4 +82,29 @@ article.toc > ul > li:first-child {
     font-size: 3.25rem;
     font-weight: 200;
     text-align: center;
+}
+
+/* Search modal */
+article.search-modal {
+    min-height: 250px;
+}
+
+/* Search results */
+.search-item {
+    margin-bottom: calc(var(--spacing) * 2.5);
+}
+.search-item h3 {
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing) * 0.5);
+}
+.search-item p {
+    margin: 0;
+}
+
+/* Code highlighting using javascript highlighter */
+pre.highlight {
+    padding: 0;
+}
+pre.highlight code.language-nohighlight {
+    padding: 1rem;
 }

@@ -1,29 +1,37 @@
 <%inherit file="../base.mhtml" />
-<%! main_class = '' %>
+<%!
+main_class = ''
+title = 'Search'
+%>
 
 <%block name="content">
+  <section role="main">
     <h1 class="title">${ _("Search") }</h1>
+    <p>${ _("Search for content on this site.") }</p>
     <hr>
     % if site.lunr_search:
-    <div class="search-container">
+      <div class="search-container">
         <form id="searchform" action="/search/" method="GET">
           <div class="cols">
-            <div class="cw9-sm">
+            <div class="cw8 cw9-sm cw10-md">
               <input id="searchfield" type="search" name="q" placeholder="${ _("Search") } &#x1F50D;">
             </div>
-            <div class="cw3-sm">
-              <input type="submit" role="button" class="mt-0" value="${ _('Search') }">
+            <div class="cw4 cw3-sm cw2-md">
+              <input type="submit" role="button" class="mt-0 d-inl" style="width:auto" value="${ _('Search') }">
             </div>
           </div>
         </form>
-       <div class="search-results mt-4" id="results">${ _("You need Javascript for the search functionality.") }</div>
+       <div class="search-results mt-4" id="results">
+         ${ _("You need Javascript for the search functionality.") }
+       </div>
     </div>
     % else:
-    <div class="admonition admonition-error">
-      <p class="admonition-title">${ _("Error") }</p>
-      <p>${ _("Search is not active on this site. This page does nothing.") }</p>
-    </div>
+      <div class="admonition admonition-error">
+        <p class="admonition-title">${ _("Error") }</p>
+        <p>${ _("Search is not active on this site. This page does nothing.") }</p>
+      </div>
     % endif
+  </section>
 </%block>
 
 <%block name="scripts">

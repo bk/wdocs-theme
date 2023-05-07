@@ -46,20 +46,14 @@ async function do_search () {
 function show_results(query, idx, summaries) {
     const res = lunr.Index.load(idx).search(query);
     if (! res.length) {
-        feedback.innerHTML = '<p class="alert alert-warning">Nothing was found.</p>';
+        feedback.innerHTML = '<div class="admonition"><p>Nothing was found.</p></div>';
         return;
     }
-    //let html = '<ul>';
-    //for (const el of res) {
-    //    const sum = summaries[el.ref];
-    //    html += `<li><a href="${el.ref}">${sum.title}</a> ${sum.summary}...</li>`;
-    //}
-    //html += '</ul>';
     let html = '';
     for (const el of res) {
         const sum = summaries[el.ref];
-        html += `<article><h3><a href="${el.ref}" class="text-decoration-none">${sum.title}</a></h3>`;
-        html += `<p>${sum.summary}...</p></article>`;
+        html += `<div class="search-item"><h3><a href="${el.ref}" class="plain">${sum.title}</a></h3>`;
+        html += `<p>${sum.summary}...</p></div>`;
     }
     feedback.innerHTML = html;
 }
