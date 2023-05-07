@@ -56,7 +56,7 @@ main_class = 'items-fixed'
         % for lang in site.hljs_languages:
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/${ lang }.min.js"></script>
         % endfor
-        <script>hljs.initHighlightingOnLoad();</script>
+        <script>hljs.highlightAll();</script>
         % endif
       </%block>
 
@@ -113,14 +113,18 @@ main_class = 'items-fixed'
               <div class="menu has-close">
                 <label for="main-menu" class="close">&times;</label>
                 <h4>${ _("Menu") }</h4>
-                <ul>
-                  % if len(nav) > 1:
-                    % for nav_item in nav:
-                      ${ _nav_sub(nav_item, SELF_URL) }
-                    % endfor
-                  % endif
-                </ul>
-                ${ _search_and_prevnext() }
+                <div class="menu-inner">
+                  <ul class="links">
+                    % if len(nav) > 1:
+                      % for nav_item in nav:
+                        ${ _nav_sub(nav_item, SELF_URL) }
+                      % endfor
+                    % endif
+                  </ul>
+                  <ul class="other">
+                    ${ _search_and_prevnext() }
+                  </ul>
+                </div>
               </div>
             </div>
           </%block>
@@ -206,6 +210,9 @@ main_class = 'items-fixed'
       </span></li>
     % endif
   % endif
+  <li>
+    <a class="switcher" href="#"><i>${ _("Dark/Light") }</i></a>
+  </li>
 </%def>\
 \
 <%def name="_nav_sub(nav_item, current_url='')">

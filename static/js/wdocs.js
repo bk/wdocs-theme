@@ -31,3 +31,31 @@ document.addEventListener("keydown", function(e){
     }
   }
 });
+
+// Switcher widget
+(function(){
+  const localTheme = localStorage.theme;
+  if (localTheme && localTheme.match(/^(?:light|dark-theme)$/)) {
+    let doc_cl = document.querySelector('html').classList;
+    doc_cl.remove('light-theme');
+    doc_cl.remove('dark-theme');
+    doc_cl.add(localTheme);
+  }
+  document.querySelectorAll('a.switcher').forEach(
+    function(s) {
+      s.addEventListener("click", function(ev) {
+        let cl = document.querySelector('html').classList;
+        if (! cl.contains('dark-theme')) {
+          cl.remove('light-theme');
+          cl.add('dark-theme');
+          localStorage.theme = 'dark-theme';
+        } else {
+          cl.remove('dark-theme');
+          cl.add('light-theme');
+          localStorage.theme = 'light-theme';
+        }
+        ev.preventDefault();
+        return false;
+      });
+    });
+})();

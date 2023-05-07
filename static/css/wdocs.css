@@ -108,3 +108,42 @@ pre.highlight {
 pre.highlight code.language-nohighlight {
     padding: 1rem;
 }
+
+/* Theme switcher widget */
+a.switcher::hover {
+    opacity: .8;
+}
+a.switcher i {
+    display: none;
+}
+a.switcher::after {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 0.15rem solid currentColor;
+    border-radius: 50%;
+    background: linear-gradient(to right, currentColor 0, currentColor 50%, transparent 50%);
+    content: "";
+    vertical-align: middle;
+}
+
+/* Mobile menu */
+nav .show-menu~.menu {
+    /* If too long, the fixed position may make scrolling impossible */
+    position: absolute;
+}
+nav .menu .menu-inner ul {
+    list-style: none;
+    line-height: 1.5;
+}
+nav .menu .menu-inner ul {
+    padding-left: 1.5rem;
+}
+nav .menu .menu-inner > ul {
+    padding-left: 1rem;
+}
+nav .menu .menu-inner ul.other {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
