@@ -26,4 +26,4 @@ markdown_extensions:
 
 markdown_extension_configs:
   toc:
-    permalink: 
+    permalink: '#'

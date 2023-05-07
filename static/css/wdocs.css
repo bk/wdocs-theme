@@ -1,0 +1,85 @@
+/* Header */
+header nav a, header nav [role="link"], header nav [role="dropdown"] {
+    color: var(--text);
+}
+header nav a.active, header nav [role="link"].active, header nav [role="dropdown"].active {
+    color: var(--text-vivid);
+    font-weight: bold;
+}
+
+/* Footer */
+footer a {
+    text-decoration: none;
+}
+
+/* Permalink symbol beside headings, visible on hover */
+a.headerlink {
+    opacity: 0;
+    padding-left: .3em;
+    text-decoration: none;
+}
+
+h1:hover a.headerlink,
+h2:hover a.headerlink,
+h3:hover a.headerlink,
+h4:hover a.headerlink,
+h5:hover a.headerlink,
+h6:hover a.headerlink {
+    opacity: .5;
+}
+
+/* Table of contents sidebar: */
+/* (1) Increased spacing */
+main.items-fixed {
+    --column-gap: calc(var(--spacing) * 3);
+}
+/* (2) Position */
+article.toc {
+    position: -webkit-sticky;
+    position: sticky;
+    top: var(--spacing);
+}
+/* (3) Link appearance */
+article.toc ul {
+    list-style: none;
+    margin: calc(var(--spacing) * 0.5) 0;
+    padding: 0;
+    line-height: 1.2;
+}
+article.toc li {
+    margin: 0;
+    padding: calc(var(--spacing) * 0.5) 0;
+    font-weight: normal;
+}
+article.toc > ul > li:first-child {
+    font-weight: bold;
+}
+
+/* Title + subtitle. (Is this too specific to the test content?) */
+/* Title heading of page */
+[role="main"] > h1:first-child {
+    font-size: 3.75rem;
+    font-weight: 200;
+    text-align: center;
+}
+/* Subtitle of page */
+[role="main"] > h1:first-child + p {
+    font-size: larger;
+    font-family: var(--sans-font);
+    text-align: center;
+    color: var(--text-light);
+    margin-top: 0;
+}
+
+/* For the frontpage (may be too specific?) */
+.jumbotron {
+    background: var(--contrast-bg);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+.jumbotron > h2 {
+    font-size: 3.25rem;
+    font-weight: 200;
+    text-align: center;
+}
