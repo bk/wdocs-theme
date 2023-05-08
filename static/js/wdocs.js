@@ -1,3 +1,5 @@
+/* Base javascript for the WDocs wmk theme */
+
 // We want at most one open dropdown menu at a time
 document.addEventListener('click', function(e) {
   let open_dd = document.querySelector('details[role="dropdown"][open]');
@@ -9,9 +11,18 @@ document.addEventListener('click', function(e) {
 // Listen for shortcut keys.
 // Currently fixed as n=next, p=prev, s=search.
 document.addEventListener("keydown", function(e){
+  let key = e.which || e.keyCode || window.event && window.event.keyCode;
+  // Esc = close modal if it's open
+  if (key == 27) {
+    let open_modal = document.querySelector('.modal > [type=checkbox]:checked');
+    if (open_modal) {
+        open_modal.checked = false;
+        return;
+    }
+  }
+  // Take care we're not entering text
   let tag = e.target.tagName.toUpperCase();
   if (tag == 'INPUT' || tag == 'TEXTAREA') return true;
-  let key = e.which || e.keyCode || window.event && window.event.keyCode;
   let sel = null;
   // n==78, p==80, s=83
   if (key == 78) { // n==next
@@ -29,6 +40,9 @@ document.addEventListener("keydown", function(e){
     let chk = document.getElementById(sel.getAttribute('for'));
     if (chk) {
       chk.checked = true;
+      e.preventDefault();
+      let field = document.getElementById('wsm-query');
+      if (field) field.focus();
     }
   }
 });

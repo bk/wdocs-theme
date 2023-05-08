@@ -8,7 +8,7 @@
     </header>
     <p>${ _("Enter your search terms below.") }</p>
     <form action="${ 'search' | url }" method="get" class="ta-center">
-      <input type="search" name="q" class="form-control" placeholder="${ _("Search...") }" id="mkdocs-search-query" title="${ _("Type search term here") }">
+      <input type="search" name="q" class="form-control" placeholder="${ _("Search...") }" id="wsm-query" title="${ _("Type search term here") }">
       <button>${ _("Submit search") }</button>
     </form>
   </article>

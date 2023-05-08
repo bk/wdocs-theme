@@ -7,8 +7,7 @@ title = 'Search'
 <%block name="content">
   <section role="main">
     <h1 class="title">${ _("Search") }</h1>
-    <p>${ _("Search for content on this site.") }</p>
-    <hr>
+    <p class="mb-4">${ _("Search for content on this site.") }</p>
     % if site.lunr_search:
       <div class="search-container">
         <form id="searchform" action="/search/" method="GET">
