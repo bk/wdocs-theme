@@ -6,7 +6,7 @@ footer_class = 'reverse-theme'
 nav_class = ''
 main_class = 'items-fixed'
 %>\
-<%namespace file="comp/utils.mc" import="other_nav, nav_sub, tags, maybe_auto_title" />\
+<%namespace file="comp/utils.mc" import="other_nav, nav_sub, tags, maybe_auto_title, repo_info" />\
 <!DOCTYPE html>
 <html lang="${ site.lang or 'en' }">
     <head>
@@ -160,10 +160,13 @@ main_class = 'items-fixed'
     <%block name="footer">
       <footer class="${ self.attr.footer_class }">
         % if site.copyright:
-          <p>${ site.copyright }</p>
+          <p class="copyright">${ site.copyright }</p>
         % endif
         % if site.tagline:
-          <p>${ site.tagline }</p>
+          <p class="tagline">${ site.tagline }</p>
+        % endif
+        % if site.repo_url:
+          <p class="repo">${ repo_info(site.repo_url, site.repo_name) }</p>
         % endif
       </footer>
     </%block>

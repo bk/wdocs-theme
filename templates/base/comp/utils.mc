@@ -104,3 +104,19 @@ if not site.auto_title_h1 or (page and page.no_auto_title_h1):
       <div></div>
   % endif
 </%def>
+
+<%def name="repo_info(repo_url, repo_name)">
+<%doc>
+  Information about the code repository, if configured. Appears in the footer.
+</%doc>
+<%
+  if not repo_name:
+      repo_name = "Code"
+  icon = getattr(icons, 'git_commit_svg')
+  if 'github' in repo_url:
+      icon = getattr(icons, 'github_svg')
+  elif 'gitlab' in repo_url:
+      icon = getattr(icons, 'gitlab_svg')
+%>
+<a href="${ repo_url | url }"><div>${ icon() |n }</div><div>${ _(repo_name) }</div></a>
+</%def>
