@@ -1,4 +1,6 @@
 % if TOC.item_count > 1:
+<div class="stack mt-0 mb-0">
+  <details class="toc-trigger"><summary>${ _("Table of Contents") }</summary></details>
   <article class="toc">
     ## <header><h4>${ _("Table of Contents") }</h4></header>
     <ul>
@@ -7,6 +9,7 @@
     % endfor
     </ul>
   </article>
+</div>
 % endif
 
 <%def name="toc_item(item)">

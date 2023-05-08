@@ -6,7 +6,8 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// Listen for shortcut keys
+// Listen for shortcut keys.
+// Currently fixed as n=next, p=prev, s=search.
 document.addEventListener("keydown", function(e){
   let tag = e.target.tagName.toUpperCase();
   if (tag == 'INPUT' || tag == 'TEXTAREA') return true;
@@ -32,14 +33,16 @@ document.addEventListener("keydown", function(e){
   }
 });
 
-// Switcher widget
+// Light/dark theme switcher widget
 (function(){
-  const localTheme = localStorage.theme;
-  if (localTheme && localTheme.match(/^(?:light|dark-theme)$/)) {
+  const saved_theme = localStorage.theme;
+  if (saved_theme && saved_theme.match(/^(?:light|dark)-theme$/)) {
     let doc_cl = document.querySelector('html').classList;
     doc_cl.remove('light-theme');
     doc_cl.remove('dark-theme');
-    doc_cl.add(localTheme);
+    doc_cl.add(saved_theme);
+  } else if (saved_theme) {
+    localStorage.theme = '';
   }
   document.querySelectorAll('a.switcher').forEach(
     function(s) {
