@@ -29,7 +29,7 @@ main_class = 'items-fixed'
       </%block>
 
       <%block name="htmltitle">
-        <title>${ page.title or _(self.attr.title) } - ${ site.name }</title>
+        <title>${ page.title or _(self.attr.title) }</title>
       </%block>
 
       <%block name="styles">
@@ -137,12 +137,14 @@ main_class = 'items-fixed'
         % if page and (page.is_homepage or page.no_sidebar):
           <section role="main">
             ${ CONTENT }
+            ${ _tags() }
           </section>
         % else:
           <section class="cols">
             <div class="cw3-md"><%include file="toc.mc" /></div>
             <div class="cw9-md" role="main">
               ${ CONTENT if CONTENT else '<!-- no content?? -->' }
+              ${ _tags() }
             </div>
           </section>
         % endif
@@ -229,5 +231,19 @@ main_class = 'items-fixed'
         % endfor
       </ul>
     </li>
+  % endif
+</%def>\
+<%def name="_tags()">
+  % if page and page.tags:
+    <div class="tagged-with bg-accent p-1 mt-5">
+      <p class="m-0"><strong>${ _("Tags") }:</strong>&nbsp;
+        % for i, tag in enumerate(page.tags):
+          <% taglink = 'tags/' + slugify(tag) %>
+          <a href="${ taglink | url }">${ tag }</a>
+          % if not i == len(page.tags) - 1:
+            &middot;
+          % endif
+        % endfor
+      </p>
   % endif
 </%def>\

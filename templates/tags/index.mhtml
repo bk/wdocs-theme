@@ -1,0 +1,65 @@
+<%inherit file="../base.mhtml"/>
+<%! main_class = '' %>
+<%block name="htmltitle"><title>${ 'Tag - ' + CURRENT_TAG if CURRENT_TAG else 'Tags' }</title></%block>
+
+<%block name="content">
+  <section role="main" class="tagpage">
+    % if CHUNK:
+
+      <h1>${ CURRENT_TAG  }</h1>
+
+      <p>${ _("List of pages with this tag") }</p>
+
+      <ul class="tagged">
+        % for it in sorted(CHUNK, key=lambda x: x['data']['page'].title):
+          <li><a href="${ it['url'] | url }">${it['data']['page'].title}</a></li>
+        % endfor
+      </ul>
+
+      <p><a href="${ 'tags/' | url }">${ _("Back to list of tags") }</a></p>
+
+    % else:
+
+      <%
+        all_tags = set()
+        tagcount = {}
+        for it in MDCONTENT:
+            if it['data']['page'].tags:
+                for tag in it['data']['page'].tags:
+                    if not tag.lower() in tagcount:
+                        tagcount[tag.lower()] = 1
+                    else:
+                        tagcount[tag.lower()] += 1
+                    all_tags.add(tag)
+        # we prefer the upper case for display
+        all_tags_list = sorted([_ for _ in all_tags])
+        tags_ics = {}
+      %>
+      <h1>${ _("Tags") }</h1>
+      <p>${ _("List of currently active tags") }</p>
+      % if all_tags_list:
+        <ul class="tags">
+          % for tag in all_tags_list:
+            % if not tag in tags_ics:
+              <% taglink = 'tags/' + slugify(tag) %>
+              <li><a href="${ taglink | url }/">${ tag }</a> (${ tagcount[tag.lower()] } ${ _("pages") })</li>
+            % endif
+            <% tags_ics[tag.lower()] = tag %>
+          % endfor
+        </ul>
+        <%
+          for tag in tags_ics:
+              tagged = MDCONTENT.has_tag([tag])
+              if len(tagged):
+                  dest = '/tags/' + slugify(tag) + '/index.html'
+                  tagged.write_to(dest, context, {'CURRENT_TAG': tags_ics[tag]})
+        %>
+      % else:
+        <div class="admonition warning">
+          <p class="admonition-title">${ _("No tags found") }</p>
+          <p>${ _("Currently there are no tagged pages on this site.") }</p>
+        </div>
+      % endif
+    % endif
+  </section>
+</%block>
