@@ -1,30 +1,41 @@
 site:
-    url: 'https://wdocs.baldr.net/'
     description: Documentation theme for wmk
     author: Baldur Kristinsson
+    leading_path: ''
+    base_url: ''
     repo_url: 'https://github.com/bk/wdocs-theme/'
     repo_name: WDocs theme on Github
     avec_theme: default
     tags_in_nav: true
     highlightjs: true
-    hljs_languages:
-        - yaml
-        - django
+    # Extra languages for highlightjs (in addition to the default 36).
+    # E.g. ['django', 'lisp'] - See https://highlightjs.org/download/ for a list.
+    hljs_languages: []
+    fontawesome: false
+    auto_title_h1: true
     copyright: |
       Created with the <a href="https://github.com/bk/wdocs-theme">WDocs</a>
       documentation theme for <a href="https://wmk.baldr.net/">wmk</a>.
-      WDocs is based on the default theme for <a href="https://mkdocs.org/">MkDocs</a>.
+    tagline: ''
+    extra_css: []
+    extra_javascript: []
+    lang: 'en_US'
+    navigation_depth: 2
+    favicon: 'img/favicon.ico'
 
 lunr_index: true
 
 markdown_extensions:
   - toc
+  - abbr
   - attr_list
   - def_list
+  - footnotes
+  - md_in_html
   - tables
-  - pymdownx.superfences
-  - pymdownx.snippets
-  - callouts
+  - sane_lists
+  - fenced_code
+  # More advanced fenced_code alternative: pymdownx.superfences
 
 markdown_extension_configs:
   toc:

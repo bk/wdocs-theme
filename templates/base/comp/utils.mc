@@ -1,3 +1,5 @@
+<%namespace name="icons" file="/lib/icons.mc" />
+
 <%def name="other_nav()">
 <%doc>
   Right/bottom navigation section:
@@ -8,10 +10,10 @@
   - light/dark theme switcher
 </%doc>
   % if site.lunr_search:
-    <li><label for="wdocs_search_modal" rel="search" role="link" class="plain mb-0"><i class="fa fa-search"></i> ${ _("Search") }</label></li>
+    <li><label for="wdocs_search_modal" rel="search" role="link" class="plain mb-0">${ icons.search() } ${ _("Search") }</label></li>
   % endif
   % if site.tags_in_nav:
-    <li><a href="${ 'tags/' | url }"><i class="fa fa-tag"></i> ${ _("Tags") }</a></li>
+    <li><a href="${ 'tags/' | url }">${ icons.tag() } ${ _("Tags") }</a></li>
   % endif
   <%
     next_url = page.next_page if page and page.next_page else None
@@ -26,20 +28,20 @@
   % if next_url or prev_url:
     % if prev_url:
       <li><a rel="prev" href="${ prev_url | url }">
-        <i class="fa fa-arrow-left"></i> <span class="inl seen-001">${ _("Previous") }</span>
+        ${ icons.arrow_left() } <span class="inl seen-001">${ _("Previous") }</span>
       </a></li>
     % else:
       <li><span rel="prev" class="disabled">
-        <i class="fa fa-arrow-left"></i> <span class="inl seen-001">${ _("Previous") }</span>
+        ${ icons.arrow_left() } <span class="inl seen-001">${ _("Previous") }</span>
       </span></li>
     % endif
     % if next_url:
       <li><a rel="next" href="${ next_url | url }"">
-        <i class="fa fa-arrow-right"></i> <span class="inl seen-001">${ _("Next") }</span>
+        ${ icons.arrow_right() } <span class="inl seen-001">${ _("Next") }</span>
       </a></li>
     % else:
       <li><span rel="prev" class="disabled">
-        <i class="fa fa-arrow-right"></i> <span class="inl seen-001">${ _("Next") }</span>
+        ${ icons.arrow_right() } <span class="inl seen-001">${ _("Next") }</span>
       </span></li>
     % endif
   % endif
@@ -83,5 +85,22 @@
           % endif
         % endfor
       </p>
+  % endif
+</%def>
+
+<%def name="maybe_auto_title()">
+<%doc>
+  If there is no <h1> at the start of CONTENT, place the page title above it,
+  but only if site.auto_title_h1 is true and page.no_auto_title_h1 is not.
+</%doc>
+<%
+if not site.auto_title_h1 or (page and page.no_auto_title_h1):
+    return ''
+%>
+  % if page and page.title and CONTENT and not CONTENT.startswith('<h1'):
+      <% page._added_auto_title = page.title %>
+      <h1 id="auto-${ page.title | slugify }">${ page.title }</h1>
+      ## To prevent the first paragraph from becoming a subheading
+      <div></div>
   % endif
 </%def>

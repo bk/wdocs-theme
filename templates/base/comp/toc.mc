@@ -1,12 +1,15 @@
-% if TOC.item_count > 1:
+% if TOC.item_count > 1 or (TOC.item_count and page and page._added_auto_title):
 <div class="stack mt-0 mb-0">
   <details class="toc-trigger"><summary>${ _("Table of Contents") }</summary></details>
   <article class="toc">
-    ## <header><h4>${ _("Table of Contents") }</h4></header>
     <ul>
-    % for item in TOC:
-      ${ toc_item(item) }
-    % endfor
+    % if page._added_auto_title:
+      ${ extended_toc(page._added_auto_title, TOC) }
+    % else:
+      % for item in TOC:
+        ${ toc_item(item) }
+      % endfor
+    % endif
     </ul>
   </article>
 </div>
@@ -26,4 +29,15 @@
         % endif
       </li>
     % endif
+</%def>
+
+<%def name="extended_toc(title, toc)">
+  <li data-level="1">
+    <a href="#auto-${ title | slugify }" class="plain h">${ title }</a>
+    <ul>
+      % for item in toc:
+        ${ toc_item(item) }
+      % endfor
+    </ul>
+  </li>
 </%def>

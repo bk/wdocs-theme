@@ -6,6 +6,13 @@ header nav a.active, header nav [role="link"].active, header nav [role="dropdown
     color: var(--text-vivid);
     font-weight: bold;
 }
+nav svg.feather {
+    height: 1em;
+    width: 1em;
+    display: inline-block;
+    position: relative;
+    top: .2em;
+}
 
 /* Footer */
 footer a {
@@ -39,6 +46,10 @@ main.items-fixed {
 /* (2) Mobile/tablet hidden with trigger, desktop visible */
 article.toc {
     display: none;
+}
+details.toc-trigger {
+    font-size: small;
+    border: none;
 }
 details.toc-trigger[open] + article.toc {
     display: block;
@@ -118,10 +129,10 @@ article.search-modal {
 }
 
 /* Code highlighting using javascript highlighter */
-pre.highlight {
+body.with-highlightjs pre {
     padding: 0;
 }
-pre.highlight code.language-nohighlight {
+body.with-highlightjs pre code {
     padding: 1rem;
 }
 
