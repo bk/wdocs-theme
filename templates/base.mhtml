@@ -34,6 +34,9 @@ main_class = 'items-fixed'
 
       <%block name="styles">
         <link href="${ 'css/avec/avec.min.css' | url }" rel="stylesheet">
+        % if site.avec_theme and site.avec_theme in ('default', 'one', 'gruvbox', 'pico', 'plain', 'selenized'):
+        <link href="${ 'css/avec/avec.%s-theme.css' % site.avec_theme |url }" rel="stylesheet">
+        % endif
         <link href="${ 'css/font-awesome.min.css' | url }" rel="stylesheet">
         <link href="${ 'css/wdocs.css' | url }" rel="stylesheet">
         % if site.highlightjs:
@@ -182,6 +185,9 @@ main_class = 'items-fixed'
   % if site.lunr_search:
     <li><label for="wdocs_search_modal" rel="search" role="link" class="plain mb-0"><i class="fa fa-search"></i> ${ _("Search") }</label></li>
   % endif
+  % if site.tags_in_nav:
+    <li><a href="${ 'tags/' | url }"><i class="fa fa-tag"></i> ${ _("Tags") }</a></li>
+  % endif
   <%
     next_url = page.next_page if page and page.next_page else None
     prev_url = page.previous_page if page and page.previous_page else None
@@ -195,20 +201,20 @@ main_class = 'items-fixed'
   % if next_url or prev_url:
     % if prev_url:
       <li><a rel="prev" href="${ prev_url | url }">
-        <i class="fa fa-arrow-left"></i> ${ _("Previous") }
+        <i class="fa fa-arrow-left"></i> <span class="inl seen-001">${ _("Previous") }</span>
       </a></li>
     % else:
       <li><span rel="prev" class="disabled">
-        <i class="fa fa-arrow-left"></i> ${ _("Previous") }
+        <i class="fa fa-arrow-left"></i> <span class="inl seen-001">${ _("Previous") }</span>
       </span></li>
     % endif
     % if next_url:
       <li><a rel="next" href="${ next_url | url }"">
-        <i class="fa fa-arrow-right"></i> ${ _("Next") }
+        <i class="fa fa-arrow-right"></i> <span class="inl seen-001">${ _("Next") }</span>
       </a></li>
     % else:
       <li><span rel="prev" class="disabled">
-        <i class="fa fa-arrow-right"></i> ${ _("Next") }
+        <i class="fa fa-arrow-right"></i> <span class="inl seen-001">${ _("Next") }</span>
       </span></li>
     % endif
   % endif

@@ -1,9 +1,11 @@
 site:
-    url: 'https://wmk.baldr.net/'
+    url: 'https://wdocs.baldr.net/'
     description: Documentation theme for wmk
     author: Baldur Kristinsson
     repo_url: 'https://github.com/bk/wdocs-theme/'
     repo_name: WDocs theme on Github
+    avec_theme: default
+    tags_in_nav: true
     highlightjs: true
     hljs_languages:
         - yaml
