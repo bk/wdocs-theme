@@ -159,14 +159,14 @@ main_class = 'items-fixed'
     </main>
     <%block name="footer">
       <footer class="${ self.attr.footer_class }">
-        % if site.copyright:
-          <p class="copyright">${ site.copyright }</p>
-        % endif
         % if site.tagline:
           <p class="tagline">${ site.tagline }</p>
         % endif
         % if site.repo_url:
           <p class="repo">${ repo_info(site.repo_url, site.repo_name) }</p>
+        % endif
+        % if site.copyright:
+          <p class="copyright">${ site.copyright }</p>
         % endif
       </footer>
     </%block>

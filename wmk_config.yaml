@@ -16,7 +16,7 @@ site:
     copyright: |
       Created with the <a href="https://github.com/bk/wdocs-theme">WDocs</a>
       documentation theme for <a href="https://wmk.baldr.net/">wmk</a>.
-    tagline: ''
+    tagline: 'Simple and easy documentation'
     extra_css: []
     extra_javascript: []
     lang: 'en_US'
