@@ -73,7 +73,7 @@ nav:
         - Impressum: about/impressum
         - License: about/license
         - Help: about/help
-    - Resources:tit
+    - Resources:
         - Code repository: https://github.com/example/repo/
         - Forum: https://example.discourse.group/
 ```
