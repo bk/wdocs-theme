@@ -1,4 +1,7 @@
+# The following site variables are used in the WDoc templates.
+# Override them as needed.
 site:
+    name: WDocs
     description: Documentation theme for wmk
     author: Baldur Kristinsson
     leading_path: ''
@@ -6,37 +9,60 @@ site:
     repo_url: 'https://github.com/bk/wdocs-theme/'
     repo_name: WDocs on Github
     avec_theme: default
-    tags_in_nav: true
-    highlightjs: true
+    tags_in_nav: truetrue
+    highlightjs: false
+    # Highlighting style for highlightjs; see https://highlightjs.org/static/demo/
+    hljs_style: github
     # Extra languages for highlightjs (in addition to the default 36).
     # E.g. ['django', 'lisp'] - See https://highlightjs.org/download/ for a list.
     hljs_languages: []
     fontawesome: false
     auto_title_h1: true
     copyright: |
-      Created with the <a href="https://github.com/bk/wdocs-theme">WDocs</a>
-      documentation theme for <a href="https://wmk.baldr.net/">wmk</a>.
+        Created with the <a href="https://github.com/bk/wdocs-theme">WDocs</a>
+        documentation theme for <a href="https://wmk.baldr.net/">wmk</a>.
     tagline: 'Simple and easy documentation'
     extra_css: []
     extra_javascript: []
-    lang: 'en_US'
     navigation_depth: 2
     favicon: 'img/favicon.ico'
+    lang: 'en'
 
+# Most documentation projects benefit from a site search.
+# It is therefore enabled by default.
 lunr_index: true
 
+# This is an example nav. You will need to override it
+# on your own page. To remove it, simply set it to a false value,
+# e.g. "nav: false". The URLs are passed to the `url` filter in
+# the template, so it is actually more flexible if they do not
+# start with '/' (or the full base URL).
+nav:
+    - Home: /
+    - Usage:
+        - Getting started: usage/getting-started
+        - Advanced settings: usage/advanced
+    - About:
+        - Impressum: about/impressum
+        - License: about/license
+        - Help: about/help
+    - Resources:
+        - Code repository: https://github.com/example/repo/
+        - Forum: https://example.discourse.group/
+
+# The Markdown extension settings are of course merely a suggestion.
 markdown_extensions:
-  - toc
-  - abbr
-  - attr_list
-  - def_list
-  - footnotes
-  - md_in_html
-  - tables
-  - sane_lists
-  - fenced_code
-  # More advanced fenced_code alternative: pymdownx.superfences
+    - toc
+    - abbr
+    - attr_list
+    - def_list
+    - footnotes
+    - md_in_html
+    - tables
+    - sane_lists
+    - fenced_code
+    # More advanced fenced_code alternative: pymdownx.superfences
 
 markdown_extension_configs:
-  toc:
-    permalink: '#'
+    toc:
+        permalink: '#'

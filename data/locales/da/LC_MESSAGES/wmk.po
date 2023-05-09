@@ -19,92 +19,92 @@ msgstr ""
 
 #: templates/404.mhtml:10
 msgid "Page not found"
-msgstr ""
+msgstr "Siden blev ikke fundet"
 
 #: templates/base/default.mhtml:119
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: templates/base/comp/search-modal.mc:7 templates/base/comp/utils.mc:13
 #: templates/search/index.mhtml:9 templates/search/index.mhtml:16
 #: templates/search/index.mhtml:19
 msgid "Search"
-msgstr ""
+msgstr "Søgning"
 
 #: templates/base/comp/search-modal.mc:9
 msgid "Enter your search terms below."
-msgstr ""
+msgstr "Indtast søgeord her forneden."
 
 #: templates/base/comp/search-modal.mc:11
 msgid "Search..."
-msgstr ""
+msgstr "Søg..."
 
 #: templates/base/comp/search-modal.mc:11
 msgid "Type search term here"
-msgstr ""
+msgstr "Indtast søgeord her"
 
 #: templates/base/comp/search-modal.mc:12
 msgid "Submit search"
-msgstr ""
+msgstr "Start søgning"
 
 #: templates/base/comp/toc.mc:3
 msgid "Table of Contents"
-msgstr ""
+msgstr "Indholdsfortegnelse"
 
 #: templates/base/comp/utils.mc:16 templates/base/comp/utils.mc:79
 #: templates/tags/index.mhtml:38
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: templates/base/comp/utils.mc:31 templates/base/comp/utils.mc:35
 msgid "Previous"
-msgstr ""
+msgstr "Forrige"
 
 #: templates/base/comp/utils.mc:40 templates/base/comp/utils.mc:44
 msgid "Next"
-msgstr ""
+msgstr "Næste"
 
 #: templates/base/comp/utils.mc:49
 msgid "Dark/Light"
-msgstr ""
+msgstr "Mørk/Lys"
 
 #: templates/search/index.mhtml:10
 msgid "Search for content on this site."
-msgstr ""
+msgstr "Søg efter indhold på dette website."
 
 #: templates/search/index.mhtml:24
 msgid "You need Javascript for the search functionality."
-msgstr ""
+msgstr "Søgefunktionen kræver Javascript"
 
 #: templates/search/index.mhtml:29
 msgid "Error"
-msgstr ""
+msgstr "Fejl"
 
 #: templates/search/index.mhtml:30
 msgid "Search is not active on this site. This page does nothing."
-msgstr ""
+msgstr "Søgefunktionen er ikke aktiveret på dette website. Denne side er uden virkning."
 
 #: templates/tags/index.mhtml:11
 msgid "List of pages with this tag"
-msgstr ""
+msgstr "Liste over sider med dette tag"
 
 #: templates/tags/index.mhtml:19
 msgid "Back to list of tags"
-msgstr ""
+msgstr "Tilbage til listen over tags"
 
 #: templates/tags/index.mhtml:39
 msgid "List of currently active tags"
-msgstr ""
+msgstr "Liste over tags, der er i brug"
 
 #: templates/tags/index.mhtml:45
 msgid "pages"
-msgstr ""
+msgstr "sider"
 
 #: templates/tags/index.mhtml:59
 msgid "No tags found"
-msgstr ""
+msgstr "Ingen tags blev fundet"
 
 #: templates/tags/index.mhtml:60
 msgid "Currently there are no tagged pages on this site."
-msgstr ""
+msgstr "Ingen tags er tilknyttet siderne på dette website."
 
