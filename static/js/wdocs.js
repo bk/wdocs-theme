@@ -51,7 +51,7 @@ document.addEventListener("keydown", function(e){
 (function(){
   const saved_theme = localStorage.theme;
   if (saved_theme && saved_theme.match(/^(?:light|dark)-theme$/)) {
-    let doc_cl = document.querySelector('html').classList;
+    let doc_cl = document.querySelector('body').classList;
     doc_cl.remove('light-theme');
     doc_cl.remove('dark-theme');
     doc_cl.add(saved_theme);
@@ -61,7 +61,7 @@ document.addEventListener("keydown", function(e){
   document.querySelectorAll('a.switcher').forEach(
     function(s) {
       s.addEventListener("click", function(ev) {
-        let cl = document.querySelector('html').classList;
+        let cl = document.querySelector('body').classList;
         if (! cl.contains('dark-theme')) {
           cl.remove('light-theme');
           cl.add('dark-theme');
