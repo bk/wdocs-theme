@@ -1,0 +1,6 @@
+lang: en
+pandoc_input_format: commonmark_x
+pandoc_extra_formats:
+  pdf: 'auto'
+pandoc_extra_formats_settings:
+  pdf: ['-d', 'xe', '-d', 'xe/gar']

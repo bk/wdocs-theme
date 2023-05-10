@@ -1,0 +1,21 @@
+site:
+    avec_theme: selenized
+    auto_title_h1: true
+    lang: en
+    extra_css:
+      - css/pandoc/solarized.css
+
+theme: wdocs-theme
+
+pandoc: true
+
+nav:
+    - Home: /
+    - Introduction: introduction
+    - Guide:
+        - Overview: usage/
+        - Configuration options: usage/options
+        - Advanced settings: usage/advanced
+        - Deploying your docs: usage/deploy
+        - Tips and tricks: usage/tips
+    - About: about
