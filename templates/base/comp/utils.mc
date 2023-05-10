@@ -1,3 +1,4 @@
+<%! import re %>
 <%namespace name="icons" file="/lib/icons.mc" />
 
 <%def name="other_nav()">
@@ -85,6 +86,22 @@
           % endif
         % endfor
       </p>
+    </div>
+  % endif
+</%def>
+
+<%def name="pdf_link()">
+  <%doc>
+    Link to PDF version if it is defined.
+  </%doc>
+  <%
+    pef = page.pandoc_extra_formats or {}
+    pdf_url = pef.get('pdf', '')
+    if pdf_url == 'auto':
+        pdf_url = re.sub(r'\.\w+$', '.pdf', SELF_SHORT_PATH)
+  %>
+  % if pdf_url:
+    <p><a href="${ pdf_url | url }" role="button" class="smaller mt-2">${ _("PDF version of this page") }</a></p>
   % endif
 </%def>
 
@@ -100,8 +117,12 @@ if not site.auto_title_h1 or (page and page.no_auto_title_h1):
   % if page and page.title and CONTENT and not CONTENT.startswith('<h1'):
       <% page._added_auto_title = page.title %>
       <h1 id="auto-${ page.title | slugify }">${ page.title }</h1>
-      ## To prevent the first paragraph from becoming a subheading
-      <div></div>
+      % if page.subtitle:
+        <p class="subtitle">${ page.subtitle }</p>
+      % else:
+        ## To prevent the first paragraph from becoming a subtitle
+        <div></div>
+      % endif
   % endif
 </%def>
 
@@ -120,3 +141,4 @@ if not site.auto_title_h1 or (page and page.no_auto_title_h1):
 %>
 <a href="${ repo_url | url }"><div>${ icon() |n }</div><div>${ _(repo_name) }</div></a>
 </%def>
+
