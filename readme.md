@@ -20,12 +20,12 @@ site:
     repo_url: 'https://github.com/bk/wdocs-theme/'
     repo_name: WDocs on Github
     avec_theme: default
-    tags_in_nav: truetrue
+    tags_in_nav: true
     highlightjs: false
     hljs_style: github
     hljs_languages: []
     fontawesome: false
-    auto_title_h1: true
+    auto_title_h1: false
     copyright: |
         Created with the <a href="https://github.com/bk/wdocs-theme">WDocs</a>
         documentation theme for <a href="https://wmk.baldr.net/">wmk</a>.
