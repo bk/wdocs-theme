@@ -166,7 +166,7 @@ a.switcher::after {
 }
 
 /* Mobile menu */
-nav .show-menu~.menu {
+body > header nav .show-menu~.menu {
     /* If too long, the fixed position may make scrolling impossible */
     position: absolute;
 }
