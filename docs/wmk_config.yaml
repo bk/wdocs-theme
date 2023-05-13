@@ -15,6 +15,7 @@ nav:
     - Guide:
         - Overview: usage/
         - Configuration options: usage/options
+        - Non-content pages: usage/non-content-pages
         - Advanced settings: usage/advanced
         - Deploying your docs: usage/deploy
         - Tips and tricks: usage/tips
