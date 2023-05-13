@@ -10,6 +10,7 @@ site:
     repo_name: WDocs on Github
     avec_theme: default
     tags_in_nav: true
+    no_sitemap: false
     highlightjs: false
     # Highlighting style for highlightjs; see https://highlightjs.org/static/demo/
     hljs_style: github
