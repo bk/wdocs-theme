@@ -16,6 +16,8 @@ title = 'Sitemap'
     % else:
       <%
       pagelist = []
+      have_jumps = 0
+      jump_pages = []
       for it in MDCONTENT:
           pg = it['data']['page']
           if not pg.do_not_render:
@@ -28,18 +30,20 @@ title = 'Sitemap'
                   'urlparts': urlparts,
                   'level': len(urlparts),
               })
-      pagelist.append({
-          'title': _("Search"),
-          'url': '/search/',
-          'urlparts': ['search'],
-          'level': 1,
-      })
-      pagelist.append({
-          'title': _("Tags"),
-          'url': '/tags/',
-          'urlparts': ['tags'],
-          'level': 1,
-      })
+      if not [x for x in pagelist if x['url'] == url('/search/')]:
+          pagelist.append({
+              'title': _("Search"),
+              'url': url('/search/'),
+              'urlparts': ['search'],
+              'level': 1,
+          })
+      if not [x for x in pagelist if x['url'] == url('/tags/')]:
+          pagelist.append({
+              'title': _("Tags"),
+              'url': '/tags/',
+              'urlparts': ['tags'],
+              'level': 1,
+          })
       pagelist.sort(key=lambda x: x['url'])
       frontpage = None
       if pagelist and pagelist[0]['level'] == 0:
@@ -48,11 +52,17 @@ title = 'Sitemap'
       maxi = len(pagelist) - 1
       %>
       % if frontpage:
-        <p><strong>${ _("Front page") }:</strong> <a href="${ frontpage['url'] }">${ frontpage['title'] }</a></p>
+        <p><strong>${ _("Frontpage") }:</strong> <a href="${ frontpage['url'] }">${ frontpage['title'] }</a></p>
+      % else:
+        <p><strong><a href="${ '/' | url }">${ _("Default frontpage") }</a></strong>. ${ _("You should replace this with your own content.") }</p>
       % endif
       <p>Other pages:</p>
       <ul>
       % for i, p in enumerate(pagelist):
+        <%
+          if (p['level'] - cur_level) > 1:
+              have_jumps += 1
+        %>
         % if p['level'] <= cur_level:
           </li>
         % endif
@@ -73,6 +83,18 @@ title = 'Sitemap'
         ${ '</ul>' * cur_level }
       % endif
       </ul>
+    % endif
+    <p><strong>${ _("Not listed on this page") }:</strong> ${ _("the sitemap page itself and individual tag pages (if any)") }.</p>
+    % if have_jumps:
+      <div class="admonition admonition-note">
+        <p class="admonition-title">${ _("Note") }</p>
+        <p>${ _("The page tree above is somewhat irregular since index files were missing for some subdirectories.") }</p>
+        % if have_jumps == 1:
+          <p>${ _("This affected one page in the list (not counting possible subpages)") }.</p>
+        % else:
+          <p>${ _("This affected %d pages in the list (not counting possible subpages)") % have_jumps }.</p>
+        % endif
+      </div>
     % endif
   </section>
 </%block>
