@@ -1,0 +1,13 @@
+<%inherit file="./base.mhtml" />
+<%!
+main_class = ''
+title = _("Frontpage")
+%>
+
+<%block name="content">
+  <section role="main">
+    <h1 class="title">${ _("Frontpage") }</h1>
+    <p class="subtitle">${ _("Default placeholder – please replace with own content") }</p>
+    <p>${ _("This is the default fallback frontpage. Its presence indicates that you have not yet created an index file in the root of your content directory.") }</p>
+  </section>
+</%block>
