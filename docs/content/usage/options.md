@@ -20,6 +20,7 @@ site:
     repo_name: WDocs on Github
     avec_theme: default
     tags_in_nav: true
+    no_sitemap: false
     highlightjs: false
     hljs_style: github
     hljs_languages: []
@@ -45,6 +46,8 @@ site:
 - `avec_theme`: The name of the [aveccss](https://github.com/bk/aveccss) color scheme. The themes available are: default, one, gruvbox, pico, plain, or selenized. All color schemes support both light and dark mode and adjust automatically to the user's light/dark preference.
 
 - `tags_in_nav`: If true, a link to the Tags page will be placed in the site navigation. 
+
+- `no_sitemap`: If true, no [sitemap](/sitemap/) page will be generated. The default is false.
 
 - `highlightjs`, `hljs_style`, `hljs_languages`: Settings for the [highlight.js](https://highlight.js/) Javascript module. If you use server-side syntax highlighting via pygments or pandoc, you will have to add CSS files yourself; the `highlightjs` configuration option is supplied as an easy alternative to this. It is, however, turned off by default.
 
