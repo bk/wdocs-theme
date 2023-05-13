@@ -2,9 +2,14 @@
 header nav a, header nav [role="link"], header nav [role="dropdown"] {
     color: var(--text);
 }
-header nav a.active, header nav [role="link"].active, header nav [role="dropdown"].active {
+header nav a.active,
+header nav [role="link"].active,
+header nav [role="dropdown"].active {
     color: var(--text-vivid);
     font-weight: bold;
+}
+header nav [role="dropdown"] a:not(.active) {
+    font-weight: normal;
 }
 nav svg.feather {
     height: 1em;
