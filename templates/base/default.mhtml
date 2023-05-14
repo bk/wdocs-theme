@@ -149,7 +149,7 @@ main_class = 'items-fixed'
           <section class="cols">
             ## Need to call this before toc.mc
             <% _auto_title = capture(maybe_auto_title) or '' %>
-            <div class="cw3-md"><%include file="comp/toc.mc" /></div>
+            <div class="cw3-md"><%block name="toc"><%include file="comp/toc.mc" /></%block></div>
             <div class="cw9-md" role="main">
               ${ _auto_title }
               ${ CONTENT if CONTENT else '<!-- no content?? -->' }
