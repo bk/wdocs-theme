@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-09 11:32+0000\n"
+"POT-Creation-Date: 2023-05-14 19:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,13 +21,29 @@ msgstr ""
 msgid "Page not found"
 msgstr ""
 
+#: templates/index.mhtml:4 templates/index.mhtml:9
+#: templates/sitemap/index.mhtml:55 templates/sitemap/index.mhtml:73
+#: templates/sitemap/index.mhtml:74
+msgid "Frontpage"
+msgstr ""
+
+#: templates/index.mhtml:10
+msgid "Default placeholder – please replace with own content"
+msgstr ""
+
+#: templates/index.mhtml:11
+msgid ""
+"This is the default fallback frontpage. Its presence indicates that you "
+"have not yet created an index file in the root of your content directory."
+msgstr ""
+
 #: templates/base/default.mhtml:119
 msgid "Menu"
 msgstr ""
 
-#: templates/base/comp/search-modal.mc:7 templates/base/comp/utils.mc:13
+#: templates/base/comp/search-modal.mc:7 templates/base/comp/utils.mc:14
 #: templates/search/index.mhtml:9 templates/search/index.mhtml:16
-#: templates/search/index.mhtml:19
+#: templates/search/index.mhtml:19 templates/sitemap/index.mhtml:35
 msgid "Search"
 msgstr ""
 
@@ -51,21 +67,25 @@ msgstr ""
 msgid "Table of Contents"
 msgstr ""
 
-#: templates/base/comp/utils.mc:16 templates/base/comp/utils.mc:79
-#: templates/tags/index.mhtml:38
+#: templates/base/comp/utils.mc:17 templates/base/comp/utils.mc:80
+#: templates/sitemap/index.mhtml:42 templates/tags/index.mhtml:38
 msgid "Tags"
 msgstr ""
 
-#: templates/base/comp/utils.mc:31 templates/base/comp/utils.mc:35
+#: templates/base/comp/utils.mc:32 templates/base/comp/utils.mc:36
 msgid "Previous"
 msgstr ""
 
-#: templates/base/comp/utils.mc:40 templates/base/comp/utils.mc:44
+#: templates/base/comp/utils.mc:41 templates/base/comp/utils.mc:45
 msgid "Next"
 msgstr ""
 
-#: templates/base/comp/utils.mc:49
+#: templates/base/comp/utils.mc:50
 msgid "Dark/Light"
+msgstr ""
+
+#: templates/base/comp/utils.mc:104
+msgid "PDF version of this page"
 msgstr ""
 
 #: templates/search/index.mhtml:10
@@ -76,12 +96,59 @@ msgstr ""
 msgid "You need Javascript for the search functionality."
 msgstr ""
 
-#: templates/search/index.mhtml:29
+#: templates/search/index.mhtml:29 templates/sitemap/index.mhtml:13
 msgid "Error"
 msgstr ""
 
 #: templates/search/index.mhtml:30
 msgid "Search is not active on this site. This page does nothing."
+msgstr ""
+
+#: templates/sitemap/index.mhtml:9
+msgid "Sitemap"
+msgstr ""
+
+#: templates/sitemap/index.mhtml:10
+msgid "The page hierarchy on this site"
+msgstr ""
+
+#: templates/sitemap/index.mhtml:14
+msgid "The sitemap has beeen turned off on this site"
+msgstr ""
+
+#: templates/sitemap/index.mhtml:57
+msgid "Default frontpage"
+msgstr ""
+
+#: templates/sitemap/index.mhtml:57
+msgid "You should replace this with your own content."
+msgstr ""
+
+#: templates/sitemap/index.mhtml:87
+msgid "Not listed on this page"
+msgstr ""
+
+#: templates/sitemap/index.mhtml:87
+msgid "the sitemap page itself and individual tag pages (if any)"
+msgstr ""
+
+#: templates/sitemap/index.mhtml:90
+msgid "Note"
+msgstr ""
+
+#: templates/sitemap/index.mhtml:91
+msgid ""
+"The page tree above is somewhat irregular since index files were missing "
+"for some subdirectories."
+msgstr ""
+
+#: templates/sitemap/index.mhtml:93
+msgid "This affected one page in the list (not counting possible subpages)"
+msgstr ""
+
+#: templates/sitemap/index.mhtml:95
+#, python-format
+msgid "This affected %d pages in the list (not counting possible subpages)"
 msgstr ""
 
 #: templates/tags/index.mhtml:11

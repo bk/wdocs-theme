@@ -6,6 +6,18 @@
 #, fuzzy
 msgid ""
 msgstr ""
+"#-#-#-#-#  wmk.pot (PROJECT VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-05-14 19:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+"#-#-#-#-#  wmk.po (PROJECT VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-09 11:32+0000\n"
@@ -20,6 +32,24 @@ msgstr ""
 #: templates/404.mhtml:10
 msgid "Page not found"
 msgstr "Siden blev ikke fundet"
+
+#: templates/index.mhtml:4 templates/index.mhtml:9
+#: templates/sitemap/index.mhtml:55 templates/sitemap/index.mhtml:73
+#: templates/sitemap/index.mhtml:74
+msgid "Frontpage"
+msgstr "Forside"
+
+#: templates/index.mhtml:10
+msgid "Default placeholder – please replace with own content"
+msgstr "Automatisk fremstillet side – venligst erstat med eget indhold"
+
+#: templates/index.mhtml:11
+msgid ""
+"This is the default fallback frontpage. Its presence indicates that you have "
+"not yet created an index file in the root of your content directory."
+msgstr ""
+"Dette er den automatisk fremstillede forside. Dens eksistens tilkendegiver, "
+"at du endnu ikke har oprettet en index-side i roden af din indholdsmappe."
 
 #: templates/base/default.mhtml:119
 msgid "Menu"
@@ -68,6 +98,10 @@ msgstr "Næste"
 msgid "Dark/Light"
 msgstr "Mørk/Lys"
 
+#: templates/base/comp/utils.mc:104
+msgid "PDF version of this page"
+msgstr "PDF-udgave af siden"
+
 #: templates/search/index.mhtml:10
 msgid "Search for content on this site."
 msgstr "Søg efter indhold på dette website."
@@ -82,7 +116,58 @@ msgstr "Fejl"
 
 #: templates/search/index.mhtml:30
 msgid "Search is not active on this site. This page does nothing."
-msgstr "Søgefunktionen er ikke aktiveret på dette website. Denne side er uden virkning."
+msgstr ""
+"Søgefunktionen er ikke aktiveret på dette website. Denne side er uden "
+"virkning."
+
+#: templates/sitemap/index.mhtml:9
+msgid "Sitemap"
+msgstr "Sitemap"
+
+#: templates/sitemap/index.mhtml:10
+msgid "The page hierarchy on this site"
+msgstr "Sidehierarkiet på dette website"
+
+#: templates/sitemap/index.mhtml:14
+msgid "The sitemap has beeen turned off on this site"
+msgstr "Sitemap-funktionen er blevet deaktiveret på dette website"
+
+#: templates/sitemap/index.mhtml:57
+msgid "Default frontpage"
+msgstr "Automatisk forside"
+
+#: templates/sitemap/index.mhtml:57
+msgid "You should replace this with your own content."
+msgstr "Du burde erstatte dette med eget indhold."
+
+#: templates/sitemap/index.mhtml:87
+msgid "Not listed on this page"
+msgstr "Ikke på ovenstående liste"
+
+#: templates/sitemap/index.mhtml:87
+msgid "the sitemap page itself and individual tag pages (if any)"
+msgstr "selve denne sitemap-side, samt sider om individelle tags (hvis de findes)"
+
+#: templates/sitemap/index.mhtml:90
+msgid "Note"
+msgstr "Bemærk"
+
+#: templates/sitemap/index.mhtml:91
+msgid ""
+"The page tree above is somewhat irregular since index files were missing for "
+"some subdirectories."
+msgstr ""
+"Sidehierarkiet her foroven er lidt uregelmæssigt, da der manglede index-filer "
+"i nogle af undermapperne."
+
+#: templates/sitemap/index.mhtml:93
+msgid "This affected one page in the list (not counting possible subpages)"
+msgstr "Dette påvirkede én side i listen (ud over eventuelle undersider)"
+
+#: templates/sitemap/index.mhtml:95
+#, python-format
+msgid "This affected %d pages in the list (not counting possible subpages)"
+msgstr "Dette påvirkede %d sider i listen (ud over eventuelle undersider)"
 
 #: templates/tags/index.mhtml:11
 msgid "List of pages with this tag"
@@ -107,4 +192,3 @@ msgstr "Ingen tags blev fundet"
 #: templates/tags/index.mhtml:60
 msgid "Currently there are no tagged pages on this site."
 msgstr "Ingen tags er tilknyttet siderne på dette website."
-
